@@ -21,7 +21,21 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@domain/entities": ["./src/app/core/domain/entities"],
+      "@domain/repositories": ["./src/app/core/domain/repositories"],
+      "@application/use-cases": ["./src/app/core/application/use-cases"],
+      "@core/shared/mappers": ["./src/app/core/shared/mappers"],
+      "@infrastructure/adapters": ["./src/app/infrastructure/adapters"],
+      "@infrastructure/di/tokens": ["./src/app/infrastructure/di/tokens"],
+      "@infrastructure/repositories": ["./src/app/infrastructure/repositories"],
+      "@infrastructure/libraries": ["./src/app/infrastructure/libraries"],
+      "@infrastructure/state/stores": ["./src/app/infrastructure/state/stores"],
+      "@infrastructure/state/facades": ["./src/app/infrastructure/state/facades"],
+      "@utils": ["./src/app/utils/common"],
+      "@shared": ["./src/app/shared"],
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
