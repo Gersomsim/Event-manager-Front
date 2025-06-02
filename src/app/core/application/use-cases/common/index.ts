@@ -1,0 +1,5 @@
+export * from './base-create.use-case'
+export * from './base-delete.use-case'
+export * from './base-get-all.use-case'
+export * from './base-get-by-id.use-case'
+export * from './base-update.use-case'
