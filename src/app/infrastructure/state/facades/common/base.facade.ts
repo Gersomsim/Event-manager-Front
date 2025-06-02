@@ -15,10 +15,7 @@ import { Observable } from 'rxjs'
  * @template T La entidad de dominio.
  * @template ID El tipo del identificador de la entidad.
  */
-export abstract class BaseFacade<
-	T extends { id: string | number },
-	ID extends string | number,
-> {
+export abstract class BaseFacade<T extends { id: string }, ID extends string> {
 	// Observables para el estado de la colección
 	items$: Observable<T[]>
 	item$: Observable<T | null>
