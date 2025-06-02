@@ -5,7 +5,12 @@
 	"projects": {
 		"Event-Manager": {
 			"projectType": "application",
-			"schematics": {},
+			"schematics": {
+				"@schematics/angular:component": {
+					"style": "css",
+					"inlineStyle": true
+				}
+			},
 			"root": "",
 			"sourceRoot": "src",
 			"prefix": "app",
@@ -19,11 +24,20 @@
 						"polyfills": ["zone.js"],
 						"tsConfig": "tsconfig.app.json",
 						"assets": ["src/favicon.ico", "src/assets"],
-						"styles": ["src/styles.css"],
-						"scripts": []
+						"styles": [
+							"src/styles.css",
+							"node_modules/flowbite/dist/flowbite.min.css"
+						],
+						"scripts": ["node_modules/flowbite/dist/flowbite.min.js"]
 					},
 					"configurations": {
 						"production": {
+							"fileReplacements": [
+								{
+									"replace": "src/environments/environment.ts",
+									"with": "src/environments/environment.prod.ts"
+								}
+							],
 							"budgets": [
 								{
 									"type": "initial",
@@ -70,8 +84,11 @@
 						"polyfills": ["zone.js", "zone.js/testing"],
 						"tsConfig": "tsconfig.spec.json",
 						"assets": ["src/favicon.ico", "src/assets"],
-						"styles": ["src/styles.css"],
-						"scripts": []
+						"styles": [
+							"src/styles.css",
+							"node_modules/flowbite/dist/flowbite.min.css"
+						],
+						"scripts": ["node_modules/flowbite/dist/flowbite.min.js"]
 					}
 				}
 			}
