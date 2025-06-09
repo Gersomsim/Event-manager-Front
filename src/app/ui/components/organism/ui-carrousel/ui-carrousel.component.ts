@@ -50,15 +50,9 @@ export class UiCarrouselComponent {
 					el: document.getElementById(`${this.id}-indicator-${item.position}`)!,
 				})),
 			},
-			onNext: () => {
-				console.log('next slider item is shown')
-			},
-			onPrev: () => {
-				console.log('previous slider item is shown')
-			},
-			onChange: () => {
-				console.log('new slider item has been shown')
-			},
+			onNext: () => {},
+			onPrev: () => {},
+			onChange: () => {},
 		}
 		const items: CarouselItem[] = this.items.map((item) => ({
 			position: item.position,

@@ -5,12 +5,12 @@ export interface Event extends BaseEntity {
 	name: string
 	slug: string
 	description: string
-	event_start_date: Date
-	event_end_date: Date
+	eventStartDate: Date
+	eventEndDate: Date
 	status: string
-	available_places: number
-	category_id: string
-	location_id: string
+	availablePlaces: number
+	categoryId: string
+	locationId: string
 	relationships: EventRelationships
 }
 

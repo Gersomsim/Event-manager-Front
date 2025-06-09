@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core'
 import { BaseDeleteUseCase } from '../common/base-delete.use-case'
 import { Event } from '@domain/entities/event.entity'
 import { EventRepository } from '@domain/repositories/event.repository'
-import { EVENT_REPOSITORY_TOKEN } from '@infrastructure/di/tokens/event.token'
+import { EVENT_REPOSITORY_TOKEN } from '@infrastructure/di/tokens'
 
 @Injectable({ providedIn: 'root' })
 export class DeleteEventUseCase extends BaseDeleteUseCase<Event> {

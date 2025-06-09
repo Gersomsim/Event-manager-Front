@@ -1,13 +1,18 @@
-import { Component } from '@angular/core'
+import { Component, inject } from '@angular/core'
 import { ComponentsModule } from '../../components/components.module'
+import { EventFacade } from '@infrastructure/state/facades'
+import { Event } from '@domain/entities'
+import { CommonModule } from '@angular/common'
 
 @Component({
 	selector: 'app-home-page',
-	imports: [ComponentsModule],
+	imports: [ComponentsModule, CommonModule],
 	templateUrl: './home-page.component.html',
 	styles: ``,
 })
 export class HomePageComponent {
+	eventFacade = inject(EventFacade)
+	events: Event[] = []
 	PrincipalSlider = [
 		{
 			image:
@@ -32,4 +37,10 @@ export class HomePageComponent {
 			},
 		},
 	]
+	ngOnInit() {
+		this.eventFacade.loadAll({})
+		this.eventFacade.items$.subscribe((events) => {
+			this.events = events
+		})
+	}
 }

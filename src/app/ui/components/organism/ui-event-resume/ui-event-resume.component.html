@@ -1,0 +1,73 @@
+<div
+	class="mx-auto mt-2 rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none"
+>
+	<div class="p-8 sm:p-10 lg:flex-auto">
+		<h3 class="text-3xl font-semibold tracking-tight text-gray-900">
+			{{ event.name }}
+		</h3>
+		<p class="mt-6 text-base/7 text-gray-600">
+			{{ event.description }}
+		</p>
+		<div class="mt-10 flex items-center gap-x-4">
+			<h4 class="flex-none text-sm/6 font-semibold text-indigo-600">
+				Detalles del evento
+			</h4>
+			<div class="h-px flex-auto bg-gray-100"></div>
+		</div>
+		<ul
+			role="list"
+			class="mt-8 grid grid-cols-1 gap-4 text-sm/6 text-gray-600 sm:grid-cols-2 sm:gap-6"
+		>
+			<li class="flex gap-x-3 items-baseline">
+				<i class="fa-solid fa-calendar-days text-indigo-600"></i>
+				<span class="font-bold sr-only">Fecha:</span>
+				{{ event.eventStartDate | date }}
+				{{ event.eventStartDate | date: 'HH:mm' }}
+			</li>
+			<li class="flex gap-x-3 items-baseline">
+				<i class="fa-solid fa-location-dot text-indigo-600"></i>
+				<span class="font-bold sr-only">Ubicación:</span>
+				<p>
+					{{ event.relationships.location.name }} <br />
+					<small class="text-gray-500">
+						{{ event.relationships.location.address }}
+					</small>
+				</p>
+			</li>
+			<li class="flex gap-x-3 items-baseline">
+				<i class="fa-solid fa-tags text-indigo-600"></i>
+				<span class="font-bold sr-only">Categoría:</span>
+				<a
+					[routerLink]="['/categories', event.categoryId]"
+					class="text-indigo-600 hover:text-indigo-500 hover:underline"
+				>
+					{{ event.relationships.category.name }}
+				</a>
+			</li>
+			<li class="flex gap-x-3 items-baseline">
+				<i class="fa-solid fa-users text-indigo-600"></i>
+				<span class="font-bold sr-only">Lugares disponibles:</span>
+				{{ event.availablePlaces }} Lugar(es)
+			</li>
+		</ul>
+	</div>
+	<div class="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:shrink-0">
+		<div
+			class="rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-gray-900/5 ring-inset lg:flex lg:flex-col lg:justify-center lg:py-16"
+		>
+			<div class="mx-auto max-w-xs px-8">
+				<p class="text-lg font-semibold text-gray-600">Asistir al evento</p>
+				<p class="mt-2 text-gray-600">
+					Para confirmar tu asistencia, debes apartar un lugar.
+				</p>
+				<a
+					href="#"
+					class="mt-10 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+				>
+					Reservar asistencia
+				</a>
+				<p class="mt-6 text-xs/5 text-gray-600">Disponible para asistir</p>
+			</div>
+		</div>
+	</div>
+</div>

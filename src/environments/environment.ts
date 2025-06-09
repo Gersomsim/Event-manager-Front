@@ -1,6 +1,6 @@
 export const environment = {
 	production: false,
-	apiUrl: 'http://localhost:3000/api',
-	versionAPI: 'v1',
+	apiUrl: 'http://127.0.0.1:8000',
+	versionAPI: 'alfa',
 	APIPath: 'api',
 }
