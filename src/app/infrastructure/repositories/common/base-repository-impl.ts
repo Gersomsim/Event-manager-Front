@@ -6,8 +6,8 @@ export abstract class BaseRepositoryImpl<T, ID, M>
 {
 	constructor(protected readonly apiAdapter: BaseApiAdapter<T, ID, M>) {}
 
-	findAll(): Promise<T[]> {
-		return this.apiAdapter.getAll()
+	findAll(filters?: any): Promise<T[]> {
+		return this.apiAdapter.getAll(filters)
 	}
 
 	findById(id: ID): Promise<T> {

@@ -1,0 +1,50 @@
+<div class="max-w-7xl mx-auto py-12 px-6">
+	<h1 class="text-4xl font-bold">Eventos</h1>
+	<hr class="my-4 border-gray-200" />
+	<div class="flex gap-4">
+		<div>
+			@for (event of events; track event.id) {
+				<app-ui-event-resume [event]="event" />
+			}
+		</div>
+		<aside class="w-1/4">
+			<div class="sticky top-20">
+				<h2 class="text-2xl font-bold">Filtros</h2>
+				<hr class="my-4 border-gray-200" />
+				<div class="flex flex-col gap-4">
+					<div class="flex flex-col gap-2">
+						<label for="search" class="text-sm font-medium">Buscar</label>
+						<app-ui-input [formControl]="search" [id]="'search'" />
+					</div>
+					<div>
+						<label for="category" class="text-sm font-medium">Categoría</label>
+						<app-ui-select>
+							<option value="all">Todas</option>
+							<option value="music">Música</option>
+						</app-ui-select>
+					</div>
+					<div>
+						<label for="country" class="text-sm font-medium">País</label>
+						<app-ui-select>
+							<option value="all">Todas</option>
+							<option value="music">Argentina</option>
+							<option value="music">Chile</option>
+							<option value="music">Perú</option>
+							<option value="music">Colombia</option>
+							<option value="music">Venezuela</option>
+							<option value="music">Ecuador</option>
+							<option value="music">Bolivia</option>
+						</app-ui-select>
+					</div>
+					<div>
+						<label for="date" class="text-sm font-medium">Ciudad</label>
+						<app-ui-select>
+							<option value="all">Todas</option>
+							<option value="music">Buenos Aires</option>
+						</app-ui-select>
+					</div>
+				</div>
+			</div>
+		</aside>
+	</div>
+</div>
