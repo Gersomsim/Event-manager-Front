@@ -1,0 +1,89 @@
+<app-auth-layout>
+	<div>
+		<h2
+			class="mt-8 text-2xl/9 font-bold tracking-tight text-gray-900 dark:text-gray-100"
+		>
+			Inicia sesión en tu cuenta
+		</h2>
+		<p class="mt-2 text-sm/6 text-gray-500 dark:text-gray-100">
+			¿No tienes una cuenta?
+			<a
+				[routerLink]="['/register']"
+				class="font-semibold text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
+				>Registrate</a
+			>
+		</p>
+	</div>
+
+	<div class="mt-10">
+		<div>
+			<form [formGroup]="form" class="space-y-6">
+				<div>
+					<label
+						for="email"
+						class="block text-sm/6 font-medium text-gray-900 dark:text-gray-100"
+						>Email address</label
+					>
+					<div class="mt-2">
+						<app-ui-input
+							[type]="'email'"
+							placeholder="Email"
+							required
+							formControlName="email"
+						/>
+					</div>
+				</div>
+
+				<div>
+					<label
+						for="password"
+						class="block text-sm/6 font-medium text-gray-900 dark:text-gray-100"
+						>Password</label
+					>
+					<div class="mt-2">
+						<app-ui-input
+							[type]="'password'"
+							placeholder="Password"
+							required
+							formControlName="password"
+						/>
+					</div>
+				</div>
+
+				<!-- <div class="flex items-center justify-between">
+          <div class="flex gap-3">
+            <div class="flex h-6 shrink-0 items-center">
+              <div class="group grid size-4 grid-cols-1">
+                <input
+                  id="remember-me"
+                  name="remember-me"
+                  type="checkbox"
+                  class="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
+                />
+              </div>
+            </div>
+            <label for="remember-me" class="block text-sm/6 text-gray-900"
+              >Remember me</label
+            >
+          </div>
+
+          <div class="text-sm/6">
+            <a
+              href="#"
+              class="font-semibold text-indigo-600 hover:text-indigo-500"
+              >Forgot password?</a
+            >
+          </div>
+        </div> -->
+				<div>
+					<app-ui-button
+						addClass="w-full bg-indigo-600 dark:bg-indigo-800 text-white"
+						[type]="'submit'"
+					>
+						Sign in
+					</app-ui-button>
+				</div>
+			</form>
+		</div>
+	</div>
+</app-auth-layout>
