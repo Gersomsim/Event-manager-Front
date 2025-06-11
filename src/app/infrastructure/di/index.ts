@@ -1,6 +1,11 @@
-import { CATEGORY_REPOSITORY_TOKEN, EVENT_REPOSITORY_TOKEN } from './tokens'
+import {
+	CATEGORY_REPOSITORY_TOKEN,
+	COUNTRY_REPOSITORY_TOKEN,
+	EVENT_REPOSITORY_TOKEN,
+} from './tokens'
 import {
 	CategoryRepositoryImpl,
+	CountryRepositoryImpl,
 	EventRepositoryImpl,
 } from '@infrastructure/repositories'
 
@@ -12,5 +17,9 @@ export const APP_PROVIDERS = [
 	{
 		provide: EVENT_REPOSITORY_TOKEN,
 		useClass: EventRepositoryImpl,
+	},
+	{
+		provide: COUNTRY_REPOSITORY_TOKEN,
+		useClass: CountryRepositoryImpl,
 	},
 ]

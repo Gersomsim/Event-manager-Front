@@ -1,5 +1,6 @@
 import { Category } from './category.entity'
 import { BaseEntity } from './common/base.entity'
+import { Country } from './country.entity'
 
 export interface Event extends BaseEntity {
 	name: string
@@ -40,9 +41,4 @@ export interface City {
 
 export interface CityRelationships {
 	country: Country
-}
-
-export interface Country {
-	id: string
-	name: string
 }

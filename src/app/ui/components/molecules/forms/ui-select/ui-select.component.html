@@ -1,0 +1,12 @@
+<select
+	[disabled]="disabled"
+	(change)="onValueChange($event)"
+	class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+>
+	<option [ngValue]="null" disabled selected>{{ placeholder }}</option>
+	@for (option of options; track option.value) {
+		<option [value]="option.value" [selected]="option.value === value">
+			{{ option.label }}
+		</option>
+	}
+</select>

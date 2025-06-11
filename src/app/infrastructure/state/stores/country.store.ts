@@ -1,12 +1,12 @@
+import { Country } from '@domain/entities/country.entity'
 import { BaseStore } from './common/base.store'
-import { Category } from '@domain/entities/category.entity'
 import { Injectable } from '@angular/core'
 
 @Injectable({
 	providedIn: 'root',
 })
-export class CategoryStore extends BaseStore<Category> {
+export class CountryStore extends BaseStore<Country> {
 	constructor() {
-		super('category')
+		super('country')
 	}
 }
