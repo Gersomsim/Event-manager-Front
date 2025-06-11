@@ -12,12 +12,14 @@ import {
 	selectAllEntities,
 } from '@ngneat/elf-entities'
 import { localStorageStrategy, persistState } from '@ngneat/elf-persist-state'
+import { Pages } from '@shared/interface/pages.interface'
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
 interface BaseStateType<T> {
 	loading: boolean
 	entity: T | null
+	pages: Pages | undefined
 }
 
 /**
@@ -35,6 +37,7 @@ export abstract class BaseStore<T extends { id: string | number }> {
 			withProps<BaseStateType<T>>({
 				loading: false,
 				entity: null,
+				pages: undefined,
 			}),
 			withEntities<T>(),
 		)
@@ -44,6 +47,16 @@ export abstract class BaseStore<T extends { id: string | number }> {
 				storage: localStorageStrategy,
 			})
 		}
+	}
+
+	setPages(pages: Pages): void {
+		this.store.update((state) => ({
+			...state,
+			pages,
+		}))
+	}
+	getPages(): Observable<Pages | undefined> {
+		return this.store.pipe(map((state) => state.pages))
 	}
 
 	// Métodos genéricos para interactuar con el store

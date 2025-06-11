@@ -1,12 +1,13 @@
 import { CrudRepository } from '@domain/repositories/common/crud.repository'
 import { BaseApiAdapter } from '@infrastructure/adapters/common/base-api.adapter'
+import { IndexResponse } from '@shared/interface/index-response.interface'
 
 export abstract class BaseRepositoryImpl<T, ID, M>
 	implements CrudRepository<T, ID>
 {
 	constructor(protected readonly apiAdapter: BaseApiAdapter<T, ID, M>) {}
 
-	findAll(filters?: any): Promise<T[]> {
+	findAll(filters?: any): Promise<IndexResponse<T[]>> {
 		return this.apiAdapter.getAll(filters)
 	}
 

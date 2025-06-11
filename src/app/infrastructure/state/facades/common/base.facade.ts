@@ -6,6 +6,8 @@ import {
 	BaseDeleteUseCase,
 } from '@application/use-cases'
 import { BaseStore } from '@infrastructure/state/stores'
+import { IndexResponse } from '@shared/interface/index-response.interface'
+import { Pages } from '@shared/interface/pages.interface'
 import { Observable } from 'rxjs'
 
 /**
@@ -19,6 +21,7 @@ export abstract class BaseFacade<T extends { id: string }, ID extends string> {
 	// Observables para el estado de la colección
 	items$: Observable<T[]>
 	item$: Observable<T | null>
+	pages$: Observable<Pages | undefined>
 	isLoading$: Observable<boolean>
 
 	constructor(
@@ -33,6 +36,7 @@ export abstract class BaseFacade<T extends { id: string }, ID extends string> {
 		this.items$ = this.store.selectAllEntities()
 		this.isLoading$ = this.store.selectLoading()
 		this.item$ = this.store.getEntity()
+		this.pages$ = this.store.getPages()
 	}
 
 	/**
@@ -46,8 +50,11 @@ export abstract class BaseFacade<T extends { id: string }, ID extends string> {
 			)
 		}
 		this.store.setLoading(true)
-		const items: T[] = await this.getAllUseCase!.execute(filters)
-		this.store.setEntities(items)
+		const items: IndexResponse<T[]> = await this.getAllUseCase!.execute(filters)
+		this.store.setEntities(items.data)
+		if (items.pages) {
+			this.store.setPages(items.pages)
+		}
 		this.store.setLoading(false)
 	}
 

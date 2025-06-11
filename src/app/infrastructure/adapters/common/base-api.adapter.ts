@@ -2,6 +2,7 @@ import { lastValueFrom, map } from 'rxjs'
 import { BaseMapper } from '../../../core/shared/mappers/base.mapper' // El mapper base que ya tenemos
 import { HttpService } from '@infrastructure/http/http.service'
 import { ApiResponse } from '@shared/interface/api-response.interface'
+import { IndexResponse } from '@shared/interface/index-response.interface'
 
 /**
  * @class BaseApiAdapter
@@ -19,10 +20,17 @@ export abstract class BaseApiAdapter<T, ID, Persistence> {
 		protected mapper: BaseMapper<T, Persistence>,
 	) {}
 
-	async getAll(filters?: any): Promise<T[]> {
+	async getAll(filters?: any): Promise<IndexResponse<T[]>> {
 		const response = this.httpService
 			.get<ApiResponse<Persistence[]>>(this.baseUrl, filters)
-			.pipe(map((resp) => resp.data.map((item) => this.mapper.toDomain(item))))
+			.pipe(
+				map((resp) => {
+					return {
+						pages: resp.pages,
+						data: resp.data.map((item) => this.mapper.toDomain(item)),
+					}
+				}),
+			)
 
 		return lastValueFrom(response)
 	}
