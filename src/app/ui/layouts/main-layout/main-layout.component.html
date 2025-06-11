@@ -21,13 +21,22 @@
 			>
 				<app-ui-button
 					size="sm"
+					addClass="dark:bg-purple-700 dark:text-white bg-purple-400"
+					[routerLink]="['/admin']"
+				>
+					Dashboard
+				</app-ui-button>
+				<app-ui-button
+					size="sm"
 					addClass="dark:bg-green-700 dark:text-white bg-green-400"
+					[routerLink]="['/register']"
 				>
 					Registrate
 				</app-ui-button>
 				<app-ui-button
 					size="sm"
 					addClass="dark:bg-blue-700 dark:text-white bg-blue-400"
+					[routerLink]="['/login']"
 				>
 					Ingresa
 				</app-ui-button>
@@ -101,19 +110,6 @@
 							}"
 							class="block py-2 px-3 rounded-sm md:p-0"
 							>Eventos</a
-						>
-					</li>
-					<li>
-						<a
-							[routerLink]="['/my-events']"
-							[ngClass]="{
-								'text-white bg-blue-700 md:bg-transparent md:text-blue-700 md:dark:text-blue-500':
-									isActive('/my-events'),
-								'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700':
-									!isActive('/my-events'),
-							}"
-							class="block py-2 px-3 rounded-sm md:p-0"
-							>Mis eventos</a
 						>
 					</li>
 					<li>
