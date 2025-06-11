@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router'
 import { UiSelectComponent } from './molecules/forms/ui-select/ui-select.component'
 import { UiInputComponent } from './atoms/forms/ui-input/ui-input.component'
 import { FormsModule } from '@angular/forms'
+import { UiPaginationComponent } from './molecules/ui-pagination/ui-pagination.component'
 
 @NgModule({
 	declarations: [
@@ -15,6 +16,7 @@ import { FormsModule } from '@angular/forms'
 		UiEventResumeComponent,
 		UiSelectComponent,
 		UiInputComponent,
+		UiPaginationComponent,
 	],
 	imports: [CommonModule, RouterModule, FormsModule],
 	exports: [
@@ -23,6 +25,7 @@ import { FormsModule } from '@angular/forms'
 		UiEventResumeComponent,
 		UiSelectComponent,
 		UiInputComponent,
+		UiPaginationComponent,
 	],
 	providers: [],
 })
