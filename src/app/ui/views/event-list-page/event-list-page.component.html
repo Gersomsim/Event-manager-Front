@@ -1,13 +1,59 @@
 <div class="max-w-7xl mx-auto py-12 px-6">
 	<h1 class="text-4xl font-bold">Eventos</h1>
+	@if (searchValue || categoryValue || countryValue || cityValue) {
+		<strong class="text-sm text-gray-500">
+			{{ events.length }} eventos encontrados
+		</strong>
+		<div class="flex gap-2 items-center my-2">
+			<button
+				class="bg-red-500 dark:bg-red-800 text-white px-2 py-0.5 text-sm rounded-md cursor-pointer"
+				(click)="clearFilters()"
+			>
+				<span class="sr-only">Limpiar filtros</span>
+				<i class="fa-solid fa-xmark"></i>
+			</button>
+			<h2 class="font-bold">Filtros</h2>
+			@if (searchValue) {
+				<span class="text-sm text-gray-500">
+					<span class="sr-only">Buscando:</span>
+					<i class="fa-solid fa-magnifying-glass"></i>
+					{{ searchValue }}
+				</span>
+			}
+			@if (categoryValue) {
+				<span class="text-sm text-gray-500">
+					<span class="sr-only">Categoría:</span>
+					<i class="fa-solid fa-tag"></i>
+					{{ getCategoryName(categoryValue) }}
+				</span>
+			}
+			@if (countryValue) {
+				<span class="text-sm text-gray-500">
+					<span class="sr-only">País:</span>
+					<i class="fa-solid fa-globe"></i>
+					{{ getCountryName(countryValue) }}
+				</span>
+			}
+			@if (cityValue) {
+				<span class="text-sm text-gray-500">
+					<span class="sr-only">Ciudad:</span>
+					<i class="fa-solid fa-city"></i>
+					{{ getCityName(cityValue) }}
+				</span>
+			}
+		</div>
+	}
 	<hr class="my-4 border-gray-200" />
 	<div class="flex gap-4">
-		<div>
+		<div class="w-3/4">
 			@for (event of events; track event.id) {
 				<app-ui-event-resume [event]="event" />
 			}
+			@if (pagination) {
+				<app-ui-pagination [pagination]="pagination" />
+			}
 		</div>
-		<aside class="w-1/4">
+		<aside class="max-w-1/4 min-w-1/4">
 			<div class="sticky top-20">
 				<h2 class="text-2xl font-bold">Filtros</h2>
 				<hr class="my-4 border-gray-200" />
@@ -18,30 +64,15 @@
 					</div>
 					<div>
 						<label for="category" class="text-sm font-medium">Categoría</label>
-						<app-ui-select>
-							<option value="all">Todas</option>
-							<option value="music">Música</option>
-						</app-ui-select>
+						<app-ui-select [formControl]="category" [options]="categories" />
 					</div>
 					<div>
 						<label for="country" class="text-sm font-medium">País</label>
-						<app-ui-select>
-							<option value="all">Todas</option>
-							<option value="music">Argentina</option>
-							<option value="music">Chile</option>
-							<option value="music">Perú</option>
-							<option value="music">Colombia</option>
-							<option value="music">Venezuela</option>
-							<option value="music">Ecuador</option>
-							<option value="music">Bolivia</option>
-						</app-ui-select>
+						<app-ui-select [formControl]="country" [options]="countries" />
 					</div>
 					<div>
 						<label for="date" class="text-sm font-medium">Ciudad</label>
-						<app-ui-select>
-							<option value="all">Todas</option>
-							<option value="music">Buenos Aires</option>
-						</app-ui-select>
+						<app-ui-select [formControl]="city" [options]="cities" />
 					</div>
 				</div>
 			</div>
